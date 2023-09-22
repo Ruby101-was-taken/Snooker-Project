@@ -35,6 +35,15 @@ public class SnookerPlayer {
     }
 
 
+    public double getWinPercent(){
+        double wins = this.wins, gamesplayed = this.gamesPlayed;
+        if (this.gamesPlayed > 0){
+            return (wins / gamesPlayed) * 100;
+        }
+        else{
+            return 0;
+        }
+    }
 
     public String getName() {
         return name;
@@ -84,6 +93,7 @@ public class SnookerPlayer {
                 ", gamesPlayed=" + gamesPlayed +
                 ", wins=" + wins +
                 ", moneyWon=€" + moneyWon +
+                ", winPercent=" + getWinPercent() +
                 '}';
     }
 }
