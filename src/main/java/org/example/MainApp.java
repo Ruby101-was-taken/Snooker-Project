@@ -36,5 +36,10 @@ public class MainApp {
             System.out.println("Position " + (i+1) + ": " + worldChampionship.sortPlayers().get(i).toString());
         }
 
+
+        worldChampionship.playTournament();
+
+        worldChampionship.viewPerformance();
+        System.out.println(worldChampionship.toString());
     }
 }

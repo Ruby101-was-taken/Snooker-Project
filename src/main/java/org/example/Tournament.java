@@ -1,5 +1,5 @@
 package org.example;
-import java.util.ArrayList;
+import java.util.*;
 public class Tournament {
     private String name;
     private double totalPrizeMoney;
@@ -115,6 +115,32 @@ public class Tournament {
         if(winnerIndex!=-1 && looserIndex!=-1){
             players.get(winnerIndex).updatePerformance(true);
             players.get(looserIndex).updatePerformance(false);
+        }
+    }
+
+    public void playTournament(){
+        Random randint = new Random();
+        int i = 0;
+        for(SnookerPlayer player : players){
+            i+=1;
+            if(i < players.size()){
+                for(int game=i; game<players.size(); game++){
+                    System.out.println(player.getName() + " vs " + players.get(game).getName());
+                    int randomNumber = randint.nextInt(0, player.getWins()+players.get(game).getWins()+1);
+                    if(randomNumber < player.getWins()){
+                        playerWins(player.getName(), players.get(game).getName());
+                        System.out.println(player.getName() + " wins!");
+                        player.increasePrizeMoney(100*player.getWins());
+                        this.totalPrizeMoney -= 100*player.getWins();
+                    }
+                    else{
+                        playerWins(players.get(game).getName(), player.getName());
+                        System.out.println(players.get(game).getName() + " wins!");
+                        players.get(game).increasePrizeMoney(100*players.get(game).getWins());
+                        this.totalPrizeMoney -= 100*players.get(game).getWins();
+                    }
+                }
+            }
         }
     }
 

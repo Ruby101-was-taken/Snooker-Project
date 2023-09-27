@@ -5,6 +5,7 @@ public class SnookerPlayer {
     private int gamesPlayed, wins;
     private double moneyWon;
 
+
     public SnookerPlayer(String name, String nationality, int gamesPlayed, int wins, double moneyWon) {
         this.name = name;
         this.nationality = nationality;
